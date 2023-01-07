@@ -1,8 +1,9 @@
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:medium_flutter_unit_testing/model/source.dart';
 
-class Article {
+class Article extends Equatable {
   Article({
     required this.source,
     required this.author,
@@ -48,4 +49,16 @@ class Article {
         "publishedAt": publishedAt.toIso8601String(),
         "content": content,
       };
+
+  @override
+  List<Object?> get props => [
+        source,
+        author,
+        title,
+        description,
+        url,
+        urlToImage,
+        publishedAt,
+        content,
+      ];
 }
