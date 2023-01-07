@@ -12,16 +12,16 @@ class NewsProvider extends ChangeNotifier {
 
   NewsProvider(this.apiService);
 
-  void loadNews() async {
+  Future<void> loadNews() async {
     state = ResultState.loading;
     notifyListeners();
 
-    // try {
-    articles = await apiService.fetchArticle();
-    state = ResultState.success;
-    // } catch (error) {
-    //   state = ResultState.failed;
-    // }
+    try {
+      articles = await apiService.fetchArticle();
+      state = ResultState.success;
+    } catch (error) {
+      state = ResultState.failed;
+    }
 
     notifyListeners();
   }

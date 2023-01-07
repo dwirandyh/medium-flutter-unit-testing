@@ -1,6 +1,8 @@
 import 'dart:convert';
 
-class Source {
+import 'package:equatable/equatable.dart';
+
+class Source extends Equatable {
   Source({
     required this.id,
     required this.name,
@@ -22,4 +24,7 @@ class Source {
         "id": id,
         "name": name,
       };
+
+  @override
+  List<Object?> get props => [id, name];
 }
